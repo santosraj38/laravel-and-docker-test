@@ -1,0 +1,22 @@
+docker-compose up --build
+docker-compose build
+
+docker build --no-cache .
+docker build --no-cache -f Dockerfile.test .
+
+docker exec -it blog-app /bin/sh
+ > php artisan migrate
+ > mysql -h mysql -p 3306 -u homestead -psecret
+
+ docker exec -it blog-app /bin/sh -c "php artisan migrate"
+
+# Conneting to mysql from host
+ mysql -h 127.0.0.1 -p 33060 -u homestead -psecret
+
+
+$ docker run -e MYSQL_ROOT_PASSWORD=secret mysql:5.7
+$ docker ps
+$ docker exec 7a97 mysql --version
+$ docker exec 7a97 mysql -uhomestead -psecret -e 'show databases;'
+$ winpty docker exec -it 7a97 mysql -uroot -psecret -e 'show databases;'
+$ winpty docker exec -it 7a97 mysql -uroot -psecret
